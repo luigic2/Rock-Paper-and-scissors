@@ -1,0 +1,147 @@
+<HTML>
+
+<body>
+
+    <style>
+        .player-options img,
+        .enemy-options img {
+            max-width: 150px;
+            opacity: 0.3;
+            cursor: pointer;
+        }
+
+        .player-options,
+        .enemy-options {
+            width: 50%;
+        }
+
+        .align {
+            display: flex;
+        }
+    </style>
+
+
+    <h1 style="text-align: center;">Pedra, papel ou tesoura!</h1>
+    <hr>
+    <div class="align">
+        <div class="player-options">
+            <div class=""><img opt="rock" src="rock.png" alt=""></div>
+            <div class=""><img opt="paper" src="paper.png" alt=""></div>
+            <div class=""><img opt="scissors" src="scissors.png" alt=""></div>
+        </div>
+        <div class="enemy-options">
+            <div class=""><img src="rock.png" alt=""></div>
+            <div class=""><img src="paper.png" alt=""></div>
+            <div class=""><img src="scissors.png" alt=""></div>
+        </div>
+
+    </div>
+    <script>
+        var elementos = document.querySelectorAll('.player-options div');
+
+        var eleclass = document.querySelectorAll('.player-options div img');
+
+        var playerOpt = "";
+
+
+        var elementosIni = document.querySelectorAll('.enemy-options div');
+
+        var eleclassIni = document.querySelectorAll('.enemy-options div img');
+
+        var playerOptIni = "";
+
+
+        function inimigoJogar() {
+            let rand = Math.floor(Math.random() * 3);
+
+            eleclassIni[rand].style.opacity = 1;
+
+            if (rand == 0) {
+
+                if (playerOpt == "rock") {
+
+                    alert("Empate!")
+
+
+                } else if (playerOpt == "paper") {
+                    alert("Você ganhou!")
+
+                } else if (playerOpt == "scissors") {
+                    alert("Você perdeu!")
+
+                }
+
+            } else if (rand == 1) {
+
+                if (playerOpt == "rock") {
+
+                    alert("Você perdeu!")
+
+
+                } else if (playerOpt == "paper") {
+                    alert("Empate!")
+
+
+                } else if (playerOpt == "scissors") {
+                    alert("Você ganhou!")
+
+                }
+
+            } else if (rand == 2) {
+                if (playerOpt == "rock") {
+
+                    alert("Você ganhou!")
+
+
+                } else if (playerOpt == "paper") {
+                    alert("Você perdeu!")
+
+                } else if (playerOpt == "scissors") {
+                    alert("Empate!")
+
+                }
+            }
+        }
+
+        function resetOpacityPlayer() {
+            for (var i = 0; i < elementos.length; i++) {
+
+                eleclass[i].style.opacity = 0.3;
+
+            }
+
+
+        }
+
+        function resetOpacityIni() {
+            for (var i = 0; i < elementosIni.length; i++) {
+
+                eleclassIni[i].style.opacity = 0.3;
+
+            }
+
+
+        }
+
+
+        for (var i = 0; i < elementos.length; i++) {
+            elementos[i].addEventListener('click', function (t) {
+
+                resetOpacityPlayer();
+                resetOpacityIni()
+                t.target.style.opacity = 1;
+                playerOpt = t.target.getAttribute('opt');
+                inimigoJogar();
+
+
+
+                // alert(playerOpt);
+
+
+            })
+
+        }
+    </script>
+</body>
+
+</HTML>
